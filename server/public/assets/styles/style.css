@@ -1,0 +1,16 @@
+label {
+    display: block;
+    padding: 5px 0;
+}
+textarea#messageText {
+    height: 100px;
+    width: 300px;
+}
+div#messageDisplay {
+    margin-top: 50px;
+}
+.message {
+    border: 1px solid black;
+    margin:5px;
+    padding: 5px;
+}

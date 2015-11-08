@@ -52,9 +52,9 @@ function updateDOM(messageArray){
 
     for(var i = 0; i < messageArray.length; i++){
         var el = "<div class='message'>" +
-            "<p>" + messageArray[i].title + "</p>" +
+            "<p>Title: " + messageArray[i].title + "</p>" +
             "<p>" + messageArray[i].message + "</p>" +
-            "<p>" + messageArray[i].name + "</p>" +
+            "<p>Name: " + messageArray[i].name + "</p>" +
             "</div>";
         //console.log(el);
         $("#messageDisplay").append(el);
