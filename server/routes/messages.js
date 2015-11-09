@@ -3,7 +3,7 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 
 var pg = require('pg');
-var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/message_board';
+var connectionString = process.env.DATABASE_URL +"?ssl=true" || 'postgres://localhost:5432/message_board';
 
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({expanded: true}));
