@@ -13,7 +13,7 @@ router.use(bodyParser.urlencoded({expanded: true}));
 router.delete('/data', function (req,res){
     pg.connect(connectionString, function(err, client){
         var personID = req.body.id;
-        client.query("DELETE FROM message_board WHERE id = $1", [personID], function(err, results){
+        client.query("DELETE * FROM message_board WHERE id = $1", [personID], function(err, results){
            if (err) {
                console.log("Error deleting: ", err);
                res.send(false);
