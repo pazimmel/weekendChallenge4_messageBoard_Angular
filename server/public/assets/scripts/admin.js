@@ -65,7 +65,7 @@ function deleteMessage(){
         data: deletedID,
         success: function(data){
             if(data){
-                $("#adminMessages").text("Message Deleted!");
+                $("#userMessages").text("Message Deleted!");
                 //display message deleted!
                 getMessages();
             }else{
