@@ -1,30 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
     <title></title>
     <!--<link rel="stylesheet" href="/vendors/bootstrap.min.css">-->
     <link rel="stylesheet" href="/assets/styles/style.css">
 
-    <script type="text/javascript" src="/vendors/jquery.min.js"></script>
+    <script type="text/javascript" src="/vendors/angular.min.js"></script>
     <script type="text/javascript" src="/assets/scripts/app.js"></script>
 </head>
 <body>
+    <div class = "messageBoard" ng-controller="messageController">
     <form id = 'inputMessage'>
         <h1>Message Board</h1>
         <label for = "messageTitle">Title</label>
-        <input type = "text" id = 'messageTitle' name = "messageTitle" data-type = "title"
+        <input ng-model = "message.title" type = "text" id = 'messageTitle'
                placeholder = 'Type message title here' autofocus>
         <label for = "messageText">Message</label>
-        <textarea type = "text" id = "messageText" name = "messageText" data-type = "message"
+        <textarea ng-model = "message.message_text" type = "text" id = "messageText"
                placeholder = 'type message here'></textarea>
         <label for = "messageWriter">Username</label>
-        <input type = "text" id = "messageWriter" name = "messageWriter" data-type = "name"
+        <input ng-model = "message.name" type = "text" id = "messageWriter"
                placeholder = 'Type username Here' required>
-        <input type = "submit" id ="submitButton" name = "submitButton" data-type = "submit">
     </form>
+        <div class ="submitButton">
+            <input ng-click = "submitMessage(message)" type = "submit" id ="submitButton" name = "submitButton">
+        </div>
     <div id = "userMessages"></div>
-    <div id = "messageDisplay">
+    <div id = "messageDisplay" ng-repeat="message in messageArray">
+        <p>{{message.title}}</p>
+        <p class = "message-text">{{message.message}}</p>
+        <p>{{message.name}}</p>
+    </div>
     </div>
 </body>
 </html>

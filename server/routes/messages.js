@@ -11,9 +11,9 @@ router.use(bodyParser.urlencoded({expanded: true}));
 //post new message to database
 router.post('/', function(req, res){
    var message = {
-       "title" : req.body.messageTitle,
-       "message" : req.body.messageText,
-       "name": req.body.messageWriter
+       "title" : req.body.title,
+       "message" : req.body.message_text,
+       "name": req.body.name
    };
     console.log(req.body);
     pg.connect(connectionString, function(err, client, done){
@@ -29,6 +29,7 @@ router.post('/', function(req, res){
         });
 
     });
+    //res.send(req.body, "hi");
 
 });
 
