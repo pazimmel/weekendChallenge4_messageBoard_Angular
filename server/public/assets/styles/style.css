@@ -14,3 +14,10 @@ div#messageDisplay {
     margin:5px;
     padding: 5px;
 }
+.delete_button {
+    border: 1px solid lightgrey;
+    width: 50px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 1px 1px lightgrey;
+}

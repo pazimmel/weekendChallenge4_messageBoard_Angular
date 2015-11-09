@@ -1,0 +1,93 @@
+/**
+ * Created by PaulZimmel on 11/8/15.
+ */
+$(document).ready(function() {
+    //getMessages
+    //console.log($("#messageText").find("data[type=name]").val());
+    getMessages();
+    $("#submitButton").on('click', inputMessage);
+    $("#messageDisplay").on('click', '.delete_button', deleteMessage);
+});
+
+function inputMessage(){
+    event.preventDefault();
+    var message = {};
+
+    $.each($("#inputMessage").serializeArray(), function(i, field){
+        message[field.name] = field.value;
+    });
+
+    $("#inputMessage").find("[type=text]").val("");
+    console.log(message);
+    postMessage(message);
+
+}
+
+function postMessage(messageObject){
+    $.ajax({
+        type:"POST",
+        url: "/data",
+        data: messageObject,
+        success: function(data){
+            console.log(data, "it came back");
+            //append message to the extent of, "message saved"
+            getMessages();
+        }
+    })
+}
+function getMessages(){
+    $.ajax({
+        type:"GET",
+        url:"/data",
+        success: function(data){
+            //$("#messageDisplay").append(data[0].title);
+            updateDOM(data);
+            console.log(data);
+        }
+    });
+}
+function deleteMessage(){
+    var deletedID = {"id": $(this).data("id")};
+    //console.log(deletedID);
+    $.ajax({
+        type:"DELETE",
+        url: "/admin/data",
+        data: deletedID,
+        success: function(data){
+            if(data){
+                //$("#messageDisplay").
+                //display message deleted!
+                getMessages();
+            }else{
+                //display message about how message is not deleted
+            }
+        }
+
+    })
+}
+function becomeAdmin(){
+    $.ajax({
+        type:"GET",
+        url: "/admin",
+        success: function(data){
+            console.log("is the admin page up?");
+        }
+
+    });
+}
+
+function updateDOM(messageArray){
+    $("#messageDisplay").empty();
+
+    for(var i = 0; i < messageArray.length; i++){
+        var el = "<div class='message'>" +
+            "<p>Title: " + messageArray[i].title + "</p>" +
+            "<p>" + messageArray[i].message + "</p>" +
+            "<p>Name: " + messageArray[i].name + "</p>" +
+            "<div class='delete_button' data-id='" +
+            messageArray[i].id + "'>Delete</div>"+
+            "</div>";
+        //console.log(el);
+        $("#messageDisplay").append(el);
+    }
+}
