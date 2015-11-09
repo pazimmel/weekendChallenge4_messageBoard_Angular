@@ -69,7 +69,7 @@ function deleteMessage(){
                 //display message deleted!
                 getMessages();
             }else{
-                $("#adminMessages").text("Unable to delete message");
+                $("#userMessages").text("Unable to delete message");
             }
         }
 
