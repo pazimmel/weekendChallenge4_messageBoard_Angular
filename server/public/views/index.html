@@ -21,16 +21,16 @@
                placeholder = 'type message here'></textarea>
         <label for = "messageWriter">Username</label>
         <input ng-model = "message.name" type = "text" id = "messageWriter"
-               placeholder = 'Type username Here' required>
+               placeholder = 'Type username here' required>
     </form>
         <div class ="submitButton">
             <input ng-click = "submitMessage(message)" type = "submit" id ="submitButton" name = "submitButton">
         </div>
-    <div id = "userMessages"></div>
-    <div id = "messageDisplay" ng-repeat="message in messageArray">
-        <p>{{message.title}}</p>
+    <div class = "userMessages"></div>
+    <div class = "message" ng-repeat="message in messageArray">
+        <p>Title: {{message.title}}</p>
         <p class = "message-text">{{message.message}}</p>
-        <p>{{message.name}}</p>
+        <p>Name: {{message.name}}</p>
     </div>
     </div>
 </body>

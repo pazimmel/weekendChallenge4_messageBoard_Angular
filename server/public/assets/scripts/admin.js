@@ -11,7 +11,7 @@ myApp.controller("messageController", ["$scope", "$http", function($scope, $http
 
     $scope.submitMessage = function(typedMessage){
         //console.log(typedMessage);
-        $http.post("/data", typedMessage).then(function(response){
+        $http.post("/data").then(function(response){
             //console.log(response);
             $scope.message = {};
             $scope.getMessages();
@@ -25,8 +25,17 @@ myApp.controller("messageController", ["$scope", "$http", function($scope, $http
         });
     };
     $scope.deleteMessage = function(someMessage){
-      $http.delete('/admin')
+        console.log(someMessage);
+        $http.delete('/admin/data/'+someMessage.id).then(function(response){
+            console.log(response.data);
+            $scope.getMessages();
+            });
     };
+    //  $http.delete('/admin/data', someMessage).then(function(response){
+    //     console.log(response.data);
+    //      $scope.getMessages();
+    //  });
+    //};
     $scope.getMessages();
 }]);
 

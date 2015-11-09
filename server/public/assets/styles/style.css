@@ -14,7 +14,7 @@ textarea#messageText {
     padding-top: 20px;
     font-style: italic;
 }
-#messageDisplay{
+.message {
     border: 1px solid black;
     margin:5px;
     padding: 5px;

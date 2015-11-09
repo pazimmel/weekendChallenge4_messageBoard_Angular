@@ -10,9 +10,13 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({expanded: true}));
 
 //delete message from database
-router.delete('/data', function (req,res){
+router.delete('/data/:id', function (req,res){
+    console.log("Word");
+
+    console.log(req.params);
     pg.connect(connectionString, function(err, client){
-        var personID = req.body.id;
+        var personID = req.params.id;
+        console.log(personID);
         client.query("DELETE FROM message_board WHERE id = $1", [personID], function(err, results){
            if (err) {
                console.log("Error deleting: ", err);

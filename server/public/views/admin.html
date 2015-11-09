@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/assets/styles/style.css">
 
     <script type="text/javascript" src="/vendors/angular.min.js"></script>
-    <script type="text/javascript" src="/assets/scripts/app.js"></script>
+    <script type="text/javascript" src="/assets/scripts/admin.js"></script>
 </head>
 <body>
 <div class = "messageBoard" ng-controller="messageController">
@@ -27,11 +27,11 @@
         <input ng-click = "submitMessage(message)" type = "submit" id ="submitButton" name = "submitButton">
     </div>
     <div id = "userMessages"></div>
-    <div id = "messageDisplay" ng-repeat="message in messageArray">
-        <p>{{message.title}}</p>
+    <div class = "message" ng-repeat="message in messageArray">
+        <p>Title: {{message.title}}</p>
         <p class = "message-text">{{message.message}}</p>
-        <p>{{message.name}}</p>
-        <div class = 'delete_button' ng-click = "deleteMessage(message)">Delete</div>
+        <p>Name: {{message.name}}</p>
+        <div class = 'delete_button' ng-click="deleteMessage(message)">Delete</div>
     </div>
 </div>
 </body>
