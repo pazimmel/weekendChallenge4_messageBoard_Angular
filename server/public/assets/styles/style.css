@@ -9,6 +9,11 @@ textarea#messageText {
 div#messageDisplay {
     margin-top: 50px;
 }
+#deletedMessagesInfo {
+    height: 50px;
+    width: 300px;
+    border: 1px solid black;
+}
 .message {
     border: 1px solid black;
     margin:5px;

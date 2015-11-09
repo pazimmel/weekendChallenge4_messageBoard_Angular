@@ -1,6 +1,9 @@
 /**
  * Created by PaulZimmel on 11/8/15.
  */
+
+//ADMIN JS page//
+
 $(document).ready(function() {
     //getMessages
     //console.log($("#messageText").find("data[type=name]").val());
@@ -65,16 +68,7 @@ function deleteMessage(){
 
     })
 }
-function becomeAdmin(){
-    $.ajax({
-        type:"GET",
-        url: "/admin",
-        success: function(data){
-            console.log("is the admin page up?");
-        }
 
-    });
-}
 
 function updateDOM(messageArray){
     $("#messageDisplay").empty();
