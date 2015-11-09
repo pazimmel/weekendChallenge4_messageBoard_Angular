@@ -7,11 +7,15 @@
 $(document).ready(function() {
     //getMessages
     //console.log($("#messageText").find("data[type=name]").val());
+    enable();
+});
+//enable
+function enable(){
     getMessages();
     $("#submitButton").on('click', inputMessage);
     $("#messageDisplay").on('click', '.delete_button', deleteMessage);
-});
-
+}
+//input new messages
 function inputMessage(){
     event.preventDefault();
     var message = {};
@@ -25,7 +29,8 @@ function inputMessage(){
     postMessage(message);
 
 }
-
+///AJAX Calls///
+//post new messages to database
 function postMessage(messageObject){
     $.ajax({
         type:"POST",
@@ -38,6 +43,7 @@ function postMessage(messageObject){
         }
     })
 }
+//get messages from database
 function getMessages(){
     $.ajax({
         type:"GET",
@@ -49,6 +55,7 @@ function getMessages(){
         }
     });
 }
+//delete message
 function deleteMessage(){
     var deletedID = {"id": $(this).data("id")};
     //console.log(deletedID);
@@ -58,26 +65,27 @@ function deleteMessage(){
         data: deletedID,
         success: function(data){
             if(data){
-                //$("#messageDisplay").
+                $("#adminMessages").text("Message Deleted!");
                 //display message deleted!
                 getMessages();
             }else{
-                //display message about how message is not deleted
+                $("#adminMessages").text("Unable to delete message");
             }
         }
 
     })
 }
 
-
+//Update DOM
+//append messages to DOM
 function updateDOM(messageArray){
     $("#messageDisplay").empty();
 
     for(var i = 0; i < messageArray.length; i++){
         var el = "<div class='message'>" +
             "<p>Title: " + messageArray[i].title + "</p>" +
-            "<p>" + messageArray[i].message + "</p>" +
-            "<p>Name: " + messageArray[i].name + "</p>" +
+            "<p class = 'message-text'>" + messageArray[i].message + "</p>" +
+            "<p> username: " + messageArray[i].name + "</p>" +
             "<div class='delete_button' data-id='" +
             messageArray[i].id + "'>Delete</div>"+
             "</div>";

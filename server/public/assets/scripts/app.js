@@ -4,11 +4,17 @@
 $(document).ready(function() {
     //getMessages
     //console.log($("#messageText").find("data[type=name]").val());
-    getMessages();
-    $("#submitButton").on('click', inputMessage);
+   enable();
 
 });
 
+//enable function
+function enable(){
+    getMessages();
+    $("#submitButton").on('click', inputMessage);
+}
+
+//input new message
 function inputMessage(){
     event.preventDefault();
     var message = {};
@@ -18,11 +24,13 @@ function inputMessage(){
     });
 
     $("#inputMessage").find("[type=text]").val("");
-    console.log(message);
+    //console.log(message);
    postMessage(message);
 
 }
 
+////AJAX Calls////
+//post new message to database
 function postMessage(messageObject){
     $.ajax({
         type:"POST",
@@ -35,6 +43,7 @@ function postMessage(messageObject){
         }
     })
 }
+//get messages from server
 function getMessages(){
     $.ajax({
         type:"GET",
@@ -47,23 +56,18 @@ function getMessages(){
     });
 }
 
+//Append Functions
+//append messages to DOM
 function updateDOM(messageArray){
     $("#messageDisplay").empty();
 
     for(var i = 0; i < messageArray.length; i++){
         var el = "<div class='message'>" +
             "<p>Title: " + messageArray[i].title + "</p>" +
-            "<p>" + messageArray[i].message + "</p>" +
-            "<p>Name: " + messageArray[i].name + "</p>" +
+            "<p class = 'message-text'>" + messageArray[i].message + "</p>" +
+            "<p> username: " + messageArray[i].name + "</p>" +
             "</div>";
         //console.log(el);
         $("#messageDisplay").append(el);
     }
 }
-//init
-    //put up stuff
-    //get data from database to populate message board
-//enable
-    //submit click listeners
-    //click listeners on each message on the message board
-        //display full message

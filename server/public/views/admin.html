@@ -18,14 +18,12 @@
     <label for = "messageText">Message</label>
         <textarea type = "text" id = "messageText" name = "messageText" data-type = "message"
                   placeholder = 'type message here'></textarea>
-    <label for = "messageWriter">Name</label>
+    <label for = "messageWriter">Username</label>
     <input type = "text" id = "messageWriter" name = "messageWriter" data-type = "name"
-           placeholder = 'Type name here' required>
+           placeholder = 'Type username here' required>
     <input type = "submit" id ="submitButton" name = "submitButton" data-type = "submit">
 </form>
-
-<div id = "messageDisplay">
-    <div id = "deletedMessagesInfo"></div>
-</div>
+<div id = "userMessages"></div>
+<div id = "messageDisplay"></div>
 </body>
 </html>

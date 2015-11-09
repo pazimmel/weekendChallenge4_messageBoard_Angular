@@ -8,6 +8,7 @@ var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/me
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({expanded: true}));
 
+//post new message to database
 router.post('/', function(req, res){
    var message = {
        "title" : req.body.messageTitle,
@@ -31,6 +32,7 @@ router.post('/', function(req, res){
 
 });
 
+//get all messages from database
 router.get('/', function(req,res){
     var results = [];
     pg.connect(connectionString, function(err,client, done){

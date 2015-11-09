@@ -9,7 +9,7 @@ var connectionString = process.env.DATABASE_URL || 'postgres://localhost:5432/me
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({expanded: true}));
 
-
+//delete message from database
 router.delete('/data', function (req,res){
     pg.connect(connectionString, function(err, client){
         var personID = req.body.id;
@@ -23,6 +23,7 @@ router.delete('/data', function (req,res){
     });
 });
 
+//load admin html page
 router.get('/*', function(req,res){
     var file = req.params[0] || "/views/admin.html";
     res.sendFile(path.join(__dirname, "../public", file));
