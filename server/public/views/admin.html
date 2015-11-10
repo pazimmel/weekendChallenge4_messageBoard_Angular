@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class = "messageBoard" ng-controller="messageController">
-    <form id = 'inputMessage'>
+    <div id = 'inputMessage'>
         <h1>Message Board</h1>
         <label for = "messageTitle">Title</label>
         <input ng-model = "message.title" type = "text" id = 'messageTitle'
@@ -22,7 +22,7 @@
         <label for = "messageWriter">Username</label>
         <input ng-model = "message.name" type = "text" id = "messageWriter"
                placeholder = 'Type username Here' required>
-    </form>
+    </div>
     <div class ="submitButton">
         <input ng-click = "submitMessage(message)" type = "submit" id ="submitButton" name = "submitButton">
     </div>

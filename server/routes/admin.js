@@ -12,9 +12,18 @@ router.use(bodyParser.urlencoded({expanded: true}));
 //delete message from database
 router.put('/data', function(req,res){
     console.log(req.body);
-    console.log(req.query);
-    console.log(req.params);
-    res.send(true);
+    pg.connect(connectionString, function(err, client){
+        var personID = req.body.id;
+        console.log(personID);
+        client.query("DELETE FROM message_board WHERE id = $1", [personID], function(err, results){
+           if (err) {
+               console.log("Error deleting: ", err);
+               res.send(false);
+           }
+            res.send(true);
+        });
+    });
+    //res.send(true);
 });
 //router.delete('/data/:id', function (req,res){
 //    console.log("Word");

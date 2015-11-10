@@ -15,9 +15,9 @@ router.post('/', function(req, res){
        "message" : req.body.message_text,
        "name": req.body.name
    };
-    console.log(req.body);
+    console.log(message);
     pg.connect(connectionString, function(err, client, done){
-        var query = client.query("INSERT INTO message_board (title, message, name) values ($1,$2,$3) RETURNING id",
+        var query = client.query("INSERT INTO message_board (title, message, name) values ($1,$2,$3)",
         [message.title, message.message, message.name],
         function (err,result) {
             if (err) {
@@ -29,7 +29,7 @@ router.post('/', function(req, res){
         });
 
     });
-    //res.send(req.body, "hi");
+    //res.send(req.body);
 
 });
 

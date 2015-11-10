@@ -10,9 +10,9 @@ myApp.controller("messageController", ["$scope", "$http", function($scope, $http
     $scope.messageArray = [];
 
     $scope.submitMessage = function(typedMessage){
-        //console.log(typedMessage);
-        $http.post("/data").then(function(response){
-            //console.log(response);
+        console.log(typedMessage);
+        $http.post("/data", typedMessage).then(function(response){
+            console.log(response);
             $scope.message = {};
             $scope.getMessages();
         });
@@ -27,7 +27,7 @@ myApp.controller("messageController", ["$scope", "$http", function($scope, $http
     //delete message with put call
     $scope.deleteMessage = function(someMessage){
         console.log(someMessage);
-        $http.put('/admin/delete',someMessage).then(function(response){
+        $http.put('/admin/data',someMessage).then(function(response){
             console.log(response);
             $scope.getMessages();
         });
