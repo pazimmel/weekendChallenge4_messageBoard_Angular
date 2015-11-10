@@ -23,24 +23,7 @@ router.put('/data', function(req,res){
             res.send(true);
         });
     });
-    //res.send(true);
 });
-//router.delete('/data/:id', function (req,res){
-//    console.log("Word");
-//
-//    console.log(req.params);
-//    pg.connect(connectionString, function(err, client){
-//        var personID = req.params.id;
-//        console.log(personID);
-//        client.query("DELETE FROM message_board WHERE id = $1", [personID], function(err, results){
-//           if (err) {
-//               console.log("Error deleting: ", err);
-//               res.send(false);
-//           }
-//            res.send(true);
-//        });
-//    });
-//});
 
 //load admin html page
 router.get('/*', function(req,res){

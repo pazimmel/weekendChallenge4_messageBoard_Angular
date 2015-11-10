@@ -24,6 +24,7 @@ myApp.controller("messageController", ["$scope", "$http", function($scope, $http
         });
     };
     $scope.getMessages();
+
 }]);
 
 

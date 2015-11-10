@@ -26,19 +26,12 @@ myApp.controller("messageController", ["$scope", "$http", function($scope, $http
     };
     //delete message with put call
     $scope.deleteMessage = function(someMessage){
-        console.log(someMessage);
+        //console.log(someMessage);
         $http.put('/admin/data',someMessage).then(function(response){
-            console.log(response);
+            //console.log(response);
             $scope.getMessages();
         });
     };
-    //$scope.deleteMessage = function(someMessage){
-    //    console.log(someMessage);
-    //    $http.delete('/admin/data/'+someMessage.id).then(function(response){
-    //        console.log(response.data);
-    //        $scope.getMessages();
-    //        });
-    //};
 
     $scope.getMessages();
 }]);

@@ -28,9 +28,15 @@
         </div>
     <div class = "userMessages"></div>
     <div class = "message" ng-repeat="message in messageArray">
-        <p>Title: {{message.title}}</p>
-        <p class = "message-text">{{message.message}}</p>
-        <p>Name: {{message.name}}</p>
+        <div ng-click="messageShow=!messageShow">
+        <!--<div ng-click="messageHide" aria-label="Toggle ngShow">-->
+            <p>Title: {{message.title}}</p>
+        </div>
+
+        <div ng-show="messageShow">
+            <p class = "message-text">{{message.message}}</p>
+            <p>Name: {{message.name}}</p>
+        </div>
     </div>
     </div>
 </body>
